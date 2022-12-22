@@ -1,0 +1,41 @@
+import java.util.*;
+public class Picture implements Comparator<Picture>{
+    String name;
+    String author;
+    int year;
+    Picture(String name, String author, int year){
+        this.name = name;
+        this.author = author;
+        this.year = year;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public int getYear() {
+        return year;
+    }
+    public void print(){
+        System.out.println("Name of picture: " + name + " Author: " + author + " Year: " + year);
+    }
+    public int compare(Picture p1, Picture p2){
+        return p1.getYear() - p2.getYear();
+    }
+    public static Comparator<Picture> YearCompare = new Comparator<Picture>() {
+        @Override
+        public int compare(Picture p1, Picture p2) {
+            return p1.getYear() - p2.getYear();
+        }
+    };
+    public static Comparator<Picture> NameCompare = new Comparator<Picture>() {
+        @Override
+        public int compare(Picture p1, Picture p2) {
+            return p1.getName().compareTo(p2.getName());
+        }
+    };
+}

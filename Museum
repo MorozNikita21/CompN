@@ -1,0 +1,45 @@
+import java.util.*;
+public class Museum {
+    ArrayList<Picture> list;
+    Museum(){
+        list = new ArrayList<Picture>();
+    }
+    void add(Picture s){
+        list.add(s);
+    }
+    void print(){
+        for (int i = 0;i<list.size();i++)
+            System.out.println(list.get(i).getName() + " " + list.get(i).getAuthor() + " " + list.get(i).getYear());
+    }
+    public void deleteName(String name){
+        int p = -1;
+        for (int i = 0;i<list.size();i++){
+            if (name.equalsIgnoreCase(list.get(i).getName()))
+                p = i;
+        }
+        if (p > -1){
+            list.remove(p);
+            System.out.println("Удалили картину под названием " + name);
+        }
+        else{
+            System.out.println("Таких картин нет");
+        }
+    }
+    public void searchAuthor(String author){
+        int f = 0;
+        for (int i = 0;i<list.size();i++){
+            if (author.equalsIgnoreCase(list.get(i).getAuthor()))
+                f = 1;
+        }
+        if (f == 1)
+            System.out.println("Такой автор есть");
+        else
+            System.out.println("Такого автора нет");
+    }
+    public void BySortYear(){
+        list.sort(Picture.YearCompare);
+    }
+    public void BySortName(){
+        list.sort(Picture.NameCompare);
+    }
+}

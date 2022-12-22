@@ -1,0 +1,29 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Museum m = new Museum();
+        System.out.println("Введите количество картин: ");
+        int n = sc.nextInt();
+        for(int i = 0; i < n;i++){
+            String name = sc.next();
+            String author = sc.next();
+            int year = sc.nextInt();
+            Picture p = new Picture(name, author, year);
+            m.add(p);
+        }
+        m.print();
+        System.out.println("Введите название картины, которую хотите удалить: ");
+        String nam = sc.next();
+        m.deleteName(nam);
+        System.out.println("Введите автора картин, которого хотите найти: ");
+        String aut = sc.next();
+        m.searchAuthor(aut);
+        System.out.println();
+        m.BySortName();
+        m.print();
+        System.out.println();
+        m.BySortYear();
+        m.print();
+    }
+}
